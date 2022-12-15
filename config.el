@@ -97,8 +97,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(when window-system (set-frame-size (selected-frame) 180 60))
 ;;(setq telega-server-libs-prefix "/opt/homebrew/opt/tdlib")
+
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (define-key global-map (kbd "C-c t") telega-prefix-map)
 
@@ -136,6 +137,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (setq org-hide-emphasis-markers t)
 (use-package org-bullets
+    :ensure t
     :config
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 (font-lock-add-keywords 'org-mode
@@ -172,4 +174,15 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; auto wrap the line over 80 column
 (global-visual-line-mode t)
 
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(setq doom-themes-treemacs-theme "doom-colors")
+
+
+;; my keybindings
+(map! "s-l" '+evil/window-vsplit-and-follow
+      "s-o" '+treemacs/toggle)
+
+;; binding with leader key template
+;; as below
+;; (map! :leader
+;;       :desc "Testing"
+;;       "c z" #'org-html-export-to-html)
