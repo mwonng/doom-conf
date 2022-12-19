@@ -7,6 +7,9 @@
 (setq doom-leader-key ","
       doom-localleader-key "\\")
 
+;; set transparentcy
+(defvar efs/frame-transparency '(90 . 90))
+
 ;; add ECS to quit
 (defun minibuffer-keyboard-quit ()
   "Abort recursive edit.
@@ -153,7 +156,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                   (org-level-6 . 1.05)
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :font "Lato" :weight 'Bold :height (cdr face)))
+    (set-face-attribute (car face) nil :font "Josefin Sans" :weight 'Bold :height (cdr face)))
 
 ;; Ensure that anything that should be fixed-pitch in Org files appears that way
 (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
@@ -176,6 +179,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (setq doom-themes-treemacs-theme "doom-colors")
 
+;; set transparency
+(set-frame-parameter (selected-frame) 'alpha efs/frame-transparency)
+(add-to-list 'default-frame-alist `(alpha . ,efs/frame-transparency))
 
 ;; my keybindings
 (map! "s-l" '+evil/window-vsplit-and-follow
