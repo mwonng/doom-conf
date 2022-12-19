@@ -192,3 +192,5 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; (map! :leader
 ;;       :desc "Testing"
 ;;       "c z" #'org-html-export-to-html)
+
+(setq fancy-splash-image (concat doom-user-dir "logo.png"))
