@@ -3,6 +3,11 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets. It is optional.
+(setq user-full-name "Michael Wang"
+      user-mail-address "michael@wonng.com")
+
 ;; CHANGE LEADER KEY
 (setq ;doom-leader-key ","
       doom-localleader-key "\\")
@@ -28,11 +33,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Michael Wang"
-      user-mail-address "michael@wonng.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -117,11 +117,9 @@ If FRAME is omitted or nil, use currently selected frame."
   (interactive)
   (unless (eq 'maximised (frame-parameter nil 'fullscreen))
     (modify-frame-parameters
-     frame '((user-position . t) (top . 0) (left . 0.5) (height . 65) (width . 120)))))
+     frame '((user-position . t) (top . 0) (left . 0.5) (height . 65) (width . 150)))))
 (add-hook 'after-init-hook #'my/frame-recenter)
 (add-hook 'after-make-frame-functions #'my/frame-recenter)
-
-(define-key global-map (kbd "C-c t") telega-prefix-map)
 
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode)
@@ -174,7 +172,7 @@ If FRAME is omitted or nil, use currently selected frame."
                   (org-level-6 . 1.05)
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
-        (set-face-attribute (car face) nil :font "Merriweather" :weight 'bold :height (cdr face)))
+        (set-face-attribute (car face) nil :font "Merriweather" :weight 'normal :height (cdr face)))
 
 ;; Ensure that anything that should be fixed-pitch in Org files appears that way
 (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
@@ -214,7 +212,3 @@ If FRAME is omitted or nil, use currently selected frame."
 (setq fancy-splash-image (concat doom-user-dir "logo.png"))
 
 
-;; (customize-set-variable 'org-blank-before-new-entry'
-;;                         ((heading . 1)(plain-list-item . nil)))
-
-;; (setq org-cycle-separator-lines 1)
