@@ -4,11 +4,11 @@
 ;; sync' after modifying this file!
 
 ;; CHANGE LEADER KEY
-(setq doom-leader-key ","
+(setq ;doom-leader-key ","
       doom-localleader-key "\\")
 
 ;; set transparentcy
-(defvar efs/frame-transparency '(90 . 90))
+(defvar efs/frame-transparency '(95 . 95))
 
 ;; add ECS to quit
 (defun minibuffer-keyboard-quit ()
@@ -46,7 +46,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font Mono" :size 16 :weight 'light))
+(setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font Mono" :size 14.0 :weight 'light))
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -57,7 +57,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-palenight)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -65,7 +65,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/MEGA/orgs/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -98,11 +98,28 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; etc).
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
+;; ;; they are implemented.
+;; (after! org (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)"))
+;;          org-todo-keywords-for-agenda '((sequence "TODO" "WAITING" "|" "DONE" "CANCELED"))
+;; ))
 
-;;(setq telega-server-libs-prefix "/opt/homebrew/opt/tdlib")
+;; ;;(setq telega-server-libs-prefix "/opt/homebrew/opt/tdlib")
 
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+;; (setq default-frame-alist '( (left . 0) (top . 0) (height . 65) (width . 100) ))
+
+;; center the frame
+(defun my/frame-recenter (&optional frame)
+  "Center FRAME on the screen.
+FRAME can be a frame name, a terminal name, or a frame.
+If FRAME is omitted or nil, use currently selected frame."
+  (interactive)
+  (unless (eq 'maximised (frame-parameter nil 'fullscreen))
+    (modify-frame-parameters
+     frame '((user-position . t) (top . 0) (left . 0.5) (height . 65) (width . 120)))))
+(add-hook 'after-init-hook #'my/frame-recenter)
+(add-hook 'after-make-frame-functions #'my/frame-recenter)
 
 (define-key global-map (kbd "C-c t") telega-prefix-map)
 
@@ -146,17 +163,18 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
 ;; Set faces for heading levels
-  (dolist (face '((org-document-title . 1.5)
-                  (org-level-1 . 2.0)
-                  (org-level-2 . 1.5)
-                  (org-level-3 . 1.3)
-                  (org-level-4 . 1.2)
+  (dolist (face '((org-document-title . 2.0)
+                  (org-level-1 . 2.4)
+                  (org-level-2 . 1.8)
+                  (org-level-3 . 1.6)
+                  (org-level-4 . 1.5)
                   (org-level-5 . 1.1)
                   (org-level-6 . 1.05)
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :font "Josefin Sans" :weight 'Bold :height (cdr face)))
+        (set-face-attribute (car face) nil :font "Merriweather" :weight 'bold :height (cdr face)))
 
 ;; Ensure that anything that should be fixed-pitch in Org files appears that way
 (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
@@ -194,3 +212,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;;       "c z" #'org-html-export-to-html)
 
 (setq fancy-splash-image (concat doom-user-dir "logo.png"))
+
+
+;; (customize-set-variable 'org-blank-before-new-entry'
+;;                         ((heading . 1)(plain-list-item . nil)))
+
+;; (setq org-cycle-separator-lines 1)
