@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: preview
+# key: C-c M-p
+# --
+
+#+BEGIN_PREVIEW
+
+#+END_PREVIEW
