@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: org-preview
+# key: p
+# --
+#+BEGIN_PREVIEW
+#+END_PREVIEW

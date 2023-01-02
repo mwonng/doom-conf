@@ -200,8 +200,8 @@ If FRAME is omitted or nil, use currently selected frame."
 (add-to-list 'default-frame-alist `(alpha . ,efs/frame-transparency))
 
 ;; my keybindings
-(map! "s-l" '+evil/window-vsplit-and-follow
-      "s-o" '+treemacs/toggle)
+(map! "M-l" '+evil/window-vsplit-and-follow
+      "M-o" '+treemacs/toggle)
 
 ;; binding with leader key template
 ;; as below
