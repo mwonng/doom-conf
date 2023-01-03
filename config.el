@@ -211,4 +211,20 @@ If FRAME is omitted or nil, use currently selected frame."
 
 (setq fancy-splash-image (concat doom-user-dir "logo.png"))
 
-
+;; show git blame inline
+(use-package blamer
+  :bind (("s-i" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 120
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))
+(setq blamer-view 'overlay)
+(setq blamer-author-formatter "  ✎ %s ")
+(setq blamer-commit-formatter " ● %s")
