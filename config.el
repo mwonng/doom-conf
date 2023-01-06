@@ -2,8 +2,8 @@
       user-mail-address "michael@wonng.com")
 
 ;; CHANGE LEADER KEY
-(setq ;doom-leader-key ","
- doom-localleader-key "\\")
+;; (setq ;doom-leader-key ","
+;;  doom-localleader-key "\\")
 
 ;; set transparentcy
 (defvar efs/frame-transparency '(95 . 95))
@@ -65,7 +65,7 @@ If FRAME is omitted or nil, use currently selected frame."
 (setq org-ellipsis " ▾")
 
 (defun my/org-init-settings ()
-  (org-superstar-mode t)
+  ;; (org-superstar-mode t)
   ;; improve org mode looks
   (setq org-startup-indented t
         org-pretty-entities t
@@ -79,12 +79,12 @@ If FRAME is omitted or nil, use currently selected frame."
 ;;                         '(("^ *\\([-]\\) "
 ;;                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-;; (setq org-bullets-bullet-list '("►" "▸" "•" "★" "◇" "◇" "◇" "◇"))
+;;(setq org-bullets-bullet-list '("►" "▸" "•" "★" "◇" "◇" "◇" "◇"))
 
 
-(setq org-superstar-remove-leading-stars t)
+;; (setq org-superstar-remove-leading-stars t)
 (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
-(setq org-superstar-item-bullet-alist '("•"))
+;; (setq org-superstar-item-bullet-alist '("•"))
 
 ;; (use-package org-bullets
 ;;     :ensure t
@@ -107,6 +107,7 @@ If FRAME is omitted or nil, use currently selected frame."
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-table nil    :inherit 'fixed-pitch)
+  (set-face-attribute 'org-indent nil   :inherit '(org-hide fixed-pitch))
   (set-face-attribute 'org-table nil    :inherit 'fixed-pitch)
   (set-face-attribute 'org-link nil     :inherit 'fixed-pitch :foreground "SkyBlue1" :underline t)
   (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
@@ -123,10 +124,11 @@ If FRAME is omitted or nil, use currently selected frame."
   (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
 
 (defun my/style-org ()
-                                        ;(setq line-spacing 0.1)
   (my/org-font-settings)
   (my/org-init-settings)
   (doom/reload-font)
+  (setq line-spacing 0.2)
+  ;; (global-blamer-mode nil)
   )
 
 (add-hook 'org-mode-hook 'my/style-org)
@@ -146,8 +148,7 @@ If FRAME is omitted or nil, use currently selected frame."
 (add-to-list 'default-frame-alist `(alpha . ,efs/frame-transparency))
 
 ;; my keybindings
-(map! "M-l" '+evil/window-vsplit-and-follow
-      "M-o" '+treemacs/toggle)
+(map! "M-o" '+treemacs/toggle)
 
 ;; binding with leader key template
 ;; as below
@@ -168,9 +169,7 @@ If FRAME is omitted or nil, use currently selected frame."
   (blamer-face ((t :foreground "#7a88cf"
                    :background nil
                    :height 120
-                   :italic t)))
-  :config
-  (global-blamer-mode 1))
+                   :italic t))))
 (setq blamer-view 'overlay)
 (setq blamer-author-formatter "  ✎ %s ")
 (setq blamer-commit-formatter " ● %s")
