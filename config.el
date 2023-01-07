@@ -148,7 +148,8 @@ If FRAME is omitted or nil, use currently selected frame."
 (add-to-list 'default-frame-alist `(alpha . ,efs/frame-transparency))
 
 ;; my keybindings
-(map! "M-o" '+treemacs/toggle)
+(map! "M-o" '+treemacs/toggle
+      "s-k" 'kill-this-buffer)
 
 ;; binding with leader key template
 ;; as below
