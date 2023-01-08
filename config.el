@@ -149,6 +149,7 @@ If FRAME is omitted or nil, use currently selected frame."
 
 ;; my keybindings
 (map! "M-o" '+treemacs/toggle
+      "s-]" '+fold/toggle
       "s-k" 'kill-this-buffer)
 
 ;; binding with leader key template
