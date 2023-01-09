@@ -5,6 +5,13 @@
 ;; (setq ;doom-leader-key ","
 ;;  doom-localleader-key "\\")
 
+(setq evil-emacs-state-cursor '("cyan" bar))
+(setq evil-normal-state-cursor '("green1" box))
+(setq evil-visual-state-cursor '("cyan" box))
+(setq evil-insert-state-cursor '("green1" bar))
+(setq evil-replace-state-cursor '("orange" hollow))
+(setq evil-operator-state-cursor '("red" hbar))
+
 ;; set transparentcy
 (defvar efs/frame-transparency '(95 . 95))
 
@@ -39,7 +46,7 @@ If FRAME is omitted or nil, use currently selected frame."
   (doom-modeline-icon t)
   (doom-modeline-major-mode-icon t)
   (doom-modeline-major-mode-color-icon t)
-  (doom-modeline-buffer-file-name-style 'truncate-upto-project)
+  (doom-modeline-buffer-file-name-style 'auto)
   (doom-modeline-buffer-state-icon t)
   (doom-modeline-buffer-modification-icon t)
   (doom-modeline-minor-modes nil)
@@ -149,7 +156,6 @@ If FRAME is omitted or nil, use currently selected frame."
 
 ;; my keybindings
 (map! "M-o" '+treemacs/toggle
-      "s-]" '+fold/toggle
       "s-k" 'kill-this-buffer)
 
 ;; binding with leader key template
