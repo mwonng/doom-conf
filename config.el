@@ -1,9 +1,12 @@
 (setq user-full-name "Michael Wang"
       user-mail-address "michael@wonng.com")
 
+(setq my/mono-font-family "OperatorMonoSSmLig Nerd Font Mono")
+(setq my/san-font-family "Merriweather")
+
 ;; CHANGE LEADER KEY
-;; (setq ;doom-leader-key ","
-;;  doom-localleader-key "\\")
+(setq ;doom-leader-key ","
+  doom-localleader-key ",")
 
 (setq evil-emacs-state-cursor '("cyan" bar))
 (setq evil-normal-state-cursor '("green1" box))
@@ -17,10 +20,10 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-(setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font Mono" :size 18.0 :weight 'light)
-      doom-variable-pitch-font (font-spec :family "Merriweather" :weight 'normal)
-      doom-serif-font (font-spec :family "OperatorMonoSSmLig Nerd Font Mono" :weight 'light)
-      doom-theme 'doom-palenight
+(setq doom-font (font-spec :family my/mono-font-family :size 18.0 :weight 'light)
+      doom-variable-pitch-font (font-spec :family my/san-font-family :weight 'normal)
+      doom-serif-font (font-spec :family my/mono-font-family :weight 'light)
+      doom-theme 'doom-spacegrey
       display-line-numbers-type t
       org-directory "~/orgs/"
       )
@@ -46,7 +49,7 @@ If FRAME is omitted or nil, use currently selected frame."
   (doom-modeline-icon t)
   (doom-modeline-major-mode-icon t)
   (doom-modeline-major-mode-color-icon t)
-  (doom-modeline-buffer-file-name-style 'auto)
+  (doom-modeline-buffer-file-name-style 'truncate-upto-project)
   (doom-modeline-buffer-state-icon t)
   (doom-modeline-buffer-modification-icon t)
   (doom-modeline-minor-modes nil)
@@ -82,34 +85,20 @@ If FRAME is omitted or nil, use currently selected frame."
         org-image-actual-width '(300))
   )
 
-;; (font-lock-add-keywords 'org-mode
-;;                         '(("^ *\\([-]\\) "
-;;                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-;;(setq org-bullets-bullet-list '("►" "▸" "•" "★" "◇" "◇" "◇" "◇"))
-
-
-;; (setq org-superstar-remove-leading-stars t)
 (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
-;; (setq org-superstar-item-bullet-alist '("•"))
-
-;; (use-package org-bullets
-;;     :ensure t
-;;     :config
-;;     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (defun my/org-font-settings ()
   ;; Increase the size of various headings
   ;; Set faces for heading levels
   (set-face-attribute 'org-document-title nil :font "Merriweather" :weight 'bold :height 1.3)
-  (set-face-attribute 'org-level-1 nil :font "Merriweather" :weight 'bold :height 1.8 :foreground "PaleVioletRed1")
-  (set-face-attribute 'org-level-2 nil :font "Merriweather" :weight 'bold :height 1.3 :foreground "PaleVioletRed2")
-  (set-face-attribute 'org-level-3 nil :font "Merriweather" :weight 'bold :height 1.05 :foreground "PaleVioletRed3")
-  (set-face-attribute 'org-level-4 nil :font "Merriweather" :weight 'bold :height 1.0)
-  (set-face-attribute 'org-level-5 nil :font "Merriweather" :weight 'bold :height 1.1)
-  (set-face-attribute 'org-level-6 nil :font "Merriweather" :weight 'bold :height 1.1)
-  (set-face-attribute 'org-level-7 nil :font "Merriweather" :weight 'bold :height 1.1)
-  (set-face-attribute 'org-level-8 nil :font "Merriweather" :weight 'bold :height 1.1)
+  (set-face-attribute 'org-level-1 nil :font "Lato" :weight 'bold :height 1.8 :foreground "PaleVioletRed1")
+  (set-face-attribute 'org-level-2 nil :font "Lato" :weight 'bold :height 1.3 :foreground "PaleVioletRed2")
+  (set-face-attribute 'org-level-3 nil :font "Lato" :weight 'regular :height 1.05 :foreground "PaleVioletRed3")
+  (set-face-attribute 'org-level-4 nil :font "Lato" :weight 'regular :height 1.0)
+  (set-face-attribute 'org-level-5 nil :font "Lato" :weight 'regular :height 1.1)
+  (set-face-attribute 'org-level-6 nil :font "Lato" :weight 'regular :height 1.1)
+  (set-face-attribute 'org-level-7 nil :font "Lato" :weight 'regular :height 1.1)
+  (set-face-attribute 'org-level-8 nil :font "Lato" :weight 'regular :height 1.1)
 
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
@@ -134,7 +123,7 @@ If FRAME is omitted or nil, use currently selected frame."
   (my/org-font-settings)
   (my/org-init-settings)
   (doom/reload-font)
-  (setq line-spacing 0.2)
+  (setq line-spacing 0.1)
   ;; (global-blamer-mode nil)
   )
 
