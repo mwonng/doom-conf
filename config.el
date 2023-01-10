@@ -23,10 +23,18 @@
 (setq doom-font (font-spec :family my/mono-font-family :size 18.0 :weight 'light)
       doom-variable-pitch-font (font-spec :family my/san-font-family :weight 'normal)
       doom-serif-font (font-spec :family my/mono-font-family :weight 'light)
-      doom-theme 'doom-spacegrey
+      doom-theme 'timu-spacegrey-flavour
       display-line-numbers-type t
       org-directory "~/orgs/"
       )
+
+(customize-set-variable 'timu-spacegrey-flavour "light")
+(customize-set-variable 'timu-spacegrey-scale-org-document-title t)
+(customize-set-variable 'timu-spacegrey-scale-org-document-info t)
+(customize-set-variable 'timu-spacegrey-scale-org-level-1 t)
+(customize-set-variable 'timu-spacegrey-scale-org-level-2 t)
+(customize-set-variable 'timu-spacegrey-scale-org-level-3 t)
+(customize-set-variable 'timu-spacegrey-org-insense-colors t)
 
 ;; center the frame
 (defun my/frame-recenter (&optional frame)
