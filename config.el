@@ -20,3 +20,6 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0)
                         (turn-off-flyspell))))
+
+(add-to-list 'load-path "~/.doom.d/lisp/org-present")
+(autoload 'org-present "org-present" nil t)
