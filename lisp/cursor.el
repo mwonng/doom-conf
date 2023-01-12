@@ -4,5 +4,3 @@
 (setq evil-insert-state-cursor '("green1" bar))
 (setq evil-replace-state-cursor '("orange" hollow))
 (setq evil-operator-state-cursor '("red" hbar))
-
-(provide 'mw/my-cursor)
