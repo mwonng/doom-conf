@@ -13,7 +13,6 @@
   )
 
 (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
-(setq org-ellipsis " ▾")
 (defun my/org-font-settings ()
   ;; Increase the size of various headings
   ;; Set faces for heading levels

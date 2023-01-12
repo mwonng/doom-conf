@@ -10,8 +10,14 @@
       "s-k" 'kill-this-buffer)
 
 (with-eval-after-load 'evil-maps
-  (define-key evil-insert-state-map (kbd "C-n") 'evil-next-line)
-  (define-key evil-insert-state-map (kbd "C-p") 'evil-previous-line));; binding with leader key template
+  (define-key evil-insert-state-map (kbd "C-n") 'next-line)
+  (define-key evil-insert-state-map (kbd "C-d") 'delete-char)
+  (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
+  (define-key evil-insert-state-map (kbd "C-y") 'yank)
+  (define-key evil-insert-state-map (kbd "C-v") 'scroll-up-command)
+  (define-key evil-insert-state-map (kbd "M-v") 'scroll-down-command)
+  (define-key evil-insert-state-map (kbd "C-e") 'move-end-of-line)
+  (define-key evil-insert-state-map (kbd "C-p") 'previous-line))
 (setq evil-escape-key-sequence "kj")
 
 (global-set-key (kbd "s-j") 'ace-window)

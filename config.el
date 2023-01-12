@@ -18,5 +18,5 @@
                 treemacs-mode-hook
                 writeroom-mode-hook
                 eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
+  (add-hook mode (lambda () (display-line-numbers-mode 0)
+                        (turn-off-flyspell))))

@@ -1,5 +1,5 @@
 ;; set transparentcy
-(defvar my/frame-transparency '(95 . 95))
+(defvar my/frame-transparency '(90 . 90))
 
 ;; center the frame
 (defun my/frame-recenter (&optional frame)
