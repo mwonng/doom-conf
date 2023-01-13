@@ -16,3 +16,5 @@
 (setq blamer-author-formatter "  ✎ %s ")
 (setq blamer-commit-formatter " ● %s")
 (setq tree-sitter-hl-mode t)
+
+(provide 'mw-coding)

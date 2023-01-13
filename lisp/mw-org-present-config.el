@@ -1,12 +1,9 @@
 ;;; Configure Package Archives -----------------------------
-
+;;; code
 ;;; Basic Appearance ---------------------------------------
-
+(require 'mw-setting)
 ;; More minimal UI
 (setq inhibit-startup-screen t)
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
 
 ;; Let the desktop background show through
 (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
@@ -21,25 +18,15 @@
 ;; Load up doom-palenight for the System Crafters look
 ;; (load-theme 'doom-palenight t)
 
-;; Set reusable font name variables
-(defvar my/fixed-width-font "OperatorMonoSSmLig Nerd Font Mono"
-  "The font to use for monospaced (fixed width) text.")
-
-(defvar my/variable-width-font "Iosevka Aile"
-  "The font to use for variable-pitch (document) text.")
-
 ;; NOTE: These settings might not be ideal for your machine, tweak them as needed!
-(set-face-attribute 'default nil :font my/fixed-width-font :weight 'light :height 180)
-(set-face-attribute 'fixed-pitch nil :font my/fixed-width-font :weight 'light :height 180)
-(set-face-attribute 'variable-pitch nil :font my/variable-width-font :weight 'light :height 1.3)
+(set-face-attribute 'default nil :font doom-font :weight 'light :height 180)
+(set-face-attribute 'fixed-pitch nil :font doom-font :weight 'light :height 180)
+(set-face-attribute 'variable-pitch nil :font doom-variable-pitch-font  :weight 'light :height 1.3)
 
 ;;; Org Mode Appearance ------------------------------------
 
 ;; Load org-faces to make sure we can set appropriate faces
 (require 'org-faces)
-
-;; Hide emphasis markers on formatted text
-(setq org-hide-emphasis-markers t)
 
 ;; Resize Org headings
 (dolist (face '((org-level-1 . 1.5)
@@ -50,16 +37,16 @@
                 (org-level-6 . 1.1)
                 (org-level-7 . 1.1)
                 (org-level-8 . 1.1)))
-  (set-face-attribute (car face) nil :font my/variable-width-font :weight 'light :height (cdr face)))
+  (set-face-attribute (car face) nil :font doom-variable-pitch-font :weight 'light :height (cdr face)))
 
 ;; Make the document title a bit bigger
-(set-face-attribute 'org-document-title nil :font my/variable-width-font :weight 'bold :height 1.3)
+(set-face-attribute 'org-document-title nil :font doom-variable-pitch-font :weight 'bold :height 1.3)
 
 ;; Make sure certain org faces use the fixed-pitch face when variable-pitch-mode is on
-(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch :height 140)
+(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
 (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
 (set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
-(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch) :height 180)
+(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
 (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
 (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
 (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
@@ -67,19 +54,11 @@
 
 ;;; Centering Org Documents --------------------------------
 
-;; Install visual-fill-column
-(unless (package-installed-p 'visual-fill-column)
-  (package-install 'visual-fill-column))
-
-;; Configure fill width
-(setq visual-fill-column-width 110
-      visual-fill-column-center-text t)
-
 ;;; Org Present --------------------------------------------
 
 ;; Install org-present if needed
-(unless (package-installed-p 'org-present)
-  (package-install 'org-present))
+;; (unless (package-installed-p 'org-present)
+;;   (package-install 'org-present))
 
 (defun my/org-present-prepare-slide (buffer-name heading)
   ;; Show only top-level headlines
@@ -107,9 +86,11 @@
   ;; Display inline images automatically
   (org-display-inline-images)
 
+  (org-present-read-only)
   ;; Center the presentation and wrap lines
-  (visual-fill-column-mode 1)
-  (visual-line-mode 1))
+  ;; (visual-fill-column-mode 1)
+  ;; (visual-line-mode 1)
+  )
 
 (defun my/org-present-end ()
   ;; Reset font customizations
@@ -117,13 +98,14 @@
 
   ;; Clear the header line string so that it isn't displayed
   (setq header-line-format nil)
-
   ;; Stop displaying inline images
   (org-remove-inline-images)
 
+  (org-present-read-write)
   ;; Stop centering the document
-  (visual-fill-column-mode 0)
-  (visual-line-mode 0))
+  ;; (visual-fill-column-mode 0)
+  ;; (visual-line-mode 0)
+)
 
 ;; Turn on variable pitch fonts in Org Mode buffers
 (add-hook 'org-mode-hook 'variable-pitch-mode)
@@ -132,3 +114,6 @@
 (add-hook 'org-present-mode-hook 'my/org-present-start)
 (add-hook 'org-present-mode-quit-hook 'my/org-present-end)
 (add-hook 'org-present-after-navigate-functions 'my/org-present-prepare-slide)
+
+(provide 'mw-org-present-config)
+;;; mw-org-present-config.el ends here

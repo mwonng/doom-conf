@@ -26,3 +26,5 @@
 ;; (map! :leader
 ;;       :desc "Testing"
 ;;       "c z" #'org-html-export-to-html)
+
+(provide 'mw-bindings)

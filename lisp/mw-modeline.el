@@ -24,3 +24,5 @@
 
 (setq doom-themes-treemacs-theme "doom-colors")
 (setq doom-themes-treemacs-enable-variable-pitch nil)
+
+(provide 'mw-modeline)

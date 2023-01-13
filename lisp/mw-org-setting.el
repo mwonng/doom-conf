@@ -1,8 +1,8 @@
 (defun my/org-init-settings ()
   (org-superstar-mode t)
-  (text-scale-set 2)
+  ;; (text-scale-set 2)
   (evil-org-mode 1)
-  (writeroom-mode 1)
+  ;; (writeroom-mode 1)
   ;; improve org mode looks
   (setq org-startup-indented t
         org-pretty-entities t
@@ -26,12 +26,12 @@
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil :font my/san-font-family :weight 'light :height (cdr face)))
   ;; Ensure that anything that should be doom-font in Org files appears that way
-  (set-face-attribute 'org-block nil    :foreground nil :inherit 'doom-font :height 0.8)
+  (set-face-attribute 'org-block nil    :foreground nil :inherit 'doom-font)
   (set-face-attribute 'org-table nil    :inherit 'doom-font)
   (set-face-attribute 'org-indent nil   :inherit '(org-hide doom-font))
   (set-face-attribute 'org-table nil    :inherit 'doom-font)
   (set-face-attribute 'org-formula nil  :inherit 'doom-font)
-  (set-face-attribute 'org-code nil     :inherit '(shadow doom-font) :height 0.8)
+  (set-face-attribute 'org-code nil     :inherit '(shadow doom-font))
   (set-face-attribute 'org-table nil    :inherit '(shadow doom-font))
   (set-face-attribute 'org-verbatim nil :inherit '(shadow doom-font))
   (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face doom-font))
@@ -44,3 +44,5 @@
   (my/org-init-settings)
   (my/org-font-settings)
   (variable-pitch-mode 1))
+
+(provide 'mw-org-setting)

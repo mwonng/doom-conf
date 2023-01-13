@@ -18,3 +18,5 @@ If FRAME is omitted or nil, use currently selected frame."
 ;; set transparency
 (set-frame-parameter (selected-frame) 'alpha my/frame-transparency)
 (add-to-list 'default-frame-alist `(alpha . ,my/frame-transparency))
+
+(provide 'init-window)
