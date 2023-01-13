@@ -1,11 +1,5 @@
 ;;; Configure Package Archives -----------------------------
 
-;; Initialize package sources
-(require 'package)
-
-;; org-present is in the "nongnu" package archive.  This line isn't needed in
-;; Emacs 28!
-
 ;;; Basic Appearance ---------------------------------------
 
 ;; More minimal UI
@@ -21,11 +15,11 @@
 ;;; Theme and Fonts ----------------------------------------
 
 ;; Install doom-themes
-(unless (package-installed-p 'doom-themes)
-  (package-install 'doom-themes))
+;; (unless (package-installed-p 'doom-themes)
+;;   (package-install 'doom-themes))
 
 ;; Load up doom-palenight for the System Crafters look
-(load-theme 'doom-palenight t)
+;; (load-theme 'doom-palenight t)
 
 ;; Set reusable font name variables
 (defvar my/fixed-width-font "OperatorMonoSSmLig Nerd Font Mono"
@@ -36,7 +30,7 @@
 
 ;; NOTE: These settings might not be ideal for your machine, tweak them as needed!
 (set-face-attribute 'default nil :font my/fixed-width-font :weight 'light :height 180)
-(set-face-attribute 'fixed-pitch nil :font my/fixed-width-font :weight 'light :height 190)
+(set-face-attribute 'fixed-pitch nil :font my/fixed-width-font :weight 'light :height 180)
 (set-face-attribute 'variable-pitch nil :font my/variable-width-font :weight 'light :height 1.3)
 
 ;;; Org Mode Appearance ------------------------------------
@@ -48,24 +42,24 @@
 (setq org-hide-emphasis-markers t)
 
 ;; Resize Org headings
-(dolist (face '((org-level-1 . 1.2)
-                (org-level-2 . 1.1)
+(dolist (face '((org-level-1 . 1.5)
+                (org-level-2 . 1.2)
                 (org-level-3 . 1.05)
                 (org-level-4 . 1.0)
                 (org-level-5 . 1.1)
                 (org-level-6 . 1.1)
                 (org-level-7 . 1.1)
                 (org-level-8 . 1.1)))
-  (set-face-attribute (car face) nil :font my/variable-width-font :weight 'medium :height (cdr face)))
+  (set-face-attribute (car face) nil :font my/variable-width-font :weight 'light :height (cdr face)))
 
 ;; Make the document title a bit bigger
 (set-face-attribute 'org-document-title nil :font my/variable-width-font :weight 'bold :height 1.3)
 
 ;; Make sure certain org faces use the fixed-pitch face when variable-pitch-mode is on
-(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch :height 140)
 (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
 (set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
-(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch) :height 180)
 (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
 (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
 (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
