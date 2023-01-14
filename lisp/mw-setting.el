@@ -1,10 +1,9 @@
-;;; package --- Summary: define my font config
+;;; package --- Summary: define font config and global settings
 ;;;
 ;;
 
 ;;; Commentary:
 ;;; code:
-(defvar mw/default-font "TEST")
 
 (defvar my/mono-font-family "OperatorMonoSSmLig Nerd Font Mono")
 (defvar my/san-font-family "Iosevka Aile")

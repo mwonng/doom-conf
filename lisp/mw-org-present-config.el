@@ -11,10 +11,6 @@
 
 ;;; Theme and Fonts ----------------------------------------
 
-;; Install doom-themes
-;; (unless (package-installed-p 'doom-themes)
-;;   (package-install 'doom-themes))
-
 ;; Load up doom-palenight for the System Crafters look
 ;; (load-theme 'doom-palenight t)
 
@@ -52,14 +48,6 @@
 (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
 (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
-;;; Centering Org Documents --------------------------------
-
-;;; Org Present --------------------------------------------
-
-;; Install org-present if needed
-;; (unless (package-installed-p 'org-present)
-;;   (package-install 'org-present))
-
 (defun my/org-present-prepare-slide (buffer-name heading)
   ;; Show only top-level headlines
   (org-overview)
@@ -87,9 +75,6 @@
   (org-display-inline-images)
 
   (org-present-read-only)
-  ;; Center the presentation and wrap lines
-  ;; (visual-fill-column-mode 1)
-  ;; (visual-line-mode 1)
   )
 
 (defun my/org-present-end ()

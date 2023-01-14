@@ -1,24 +1,16 @@
 (add-to-list 'load-path "~/.doom.d/lisp")
 (require 'mw-setting)
-
 (require 'mw-global)
 (require 'init-window)
 (require 'mw-modeline)
 (require 'mw-bindings)
 (require 'mw-cursor)
 (require 'mw-coding)
-;; (load-file "~/.doom.d/lisp/global.el")
-;; (load-file "~/.doom.d/lisp/init-window.el")
-;; (load-file "~/.doom.d/lisp/modeline.el")
-;; (load-file "~/.doom.d/lisp/my-bindings.el")
-;; (load-file "~/.doom.d/lisp/cursor.el")
-;; (load-file "~/.doom.d/lisp/coding.el")
 
 (setq user-full-name "Michael Wang"
       user-mail-address "michael@wonng.com")
 
 (require 'mw-org-setting)
-;; (load-file "~/.doom.d/lisp/org-setting.el")
 (add-hook 'org-mode-hook 'my/style-org)
 
 ;; Disable line numbers for some modes

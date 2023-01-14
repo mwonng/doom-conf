@@ -1,16 +1,13 @@
 (defun my/org-init-settings ()
   (org-superstar-mode t)
-  ;; (text-scale-set 2)
   (evil-org-mode 1)
-  ;; (writeroom-mode 1)
   ;; improve org mode looks
   (setq org-startup-indented t
         org-pretty-entities t
         org-hide-emphasis-markers t
         org-startup-with-inline-images t
         org-src-fontify-natively t
-        org-image-actual-width '(800))
-  )
+        org-image-actual-width '(800)))
 
 (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
 (defun my/org-font-settings ()
@@ -37,8 +34,7 @@
   (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face doom-font))
   (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face doom-font))
   (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face doom-font))
-  (set-face-attribute 'org-checkbox nil  :inherit 'doom-font)
-  )
+  (set-face-attribute 'org-checkbox nil  :inherit 'doom-font))
 
 (defun my/style-org ()
   (my/org-init-settings)
