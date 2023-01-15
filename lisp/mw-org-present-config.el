@@ -4,7 +4,7 @@
 ;;; Basic Appearance ---------------------------------------
 (require 'org)
 (require 'org-present)
-(require 'mw-setting)
+(require 'mw-ui-config)
 
 ;; More minimal UI
 ;;; Code:

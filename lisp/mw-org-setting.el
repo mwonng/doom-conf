@@ -3,7 +3,7 @@
 ;;; Code:
 (require 'org-superstar)
 (require 'writeroom-mode)
-(require 'mw-setting)
+(require 'mw-ui-config)
 
 (defun my/org-init-settings ()
   "Init my setting when 'org-mode'."

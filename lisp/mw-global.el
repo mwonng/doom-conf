@@ -1,5 +1,7 @@
+;;; Package -- my emacs setting
+;;; Commentary:
+;;; Code:
 ;;; lisp/global.el -*- lexical-binding: t; -*-
-
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
@@ -17,3 +19,4 @@
 (setq fancy-splash-image (concat doom-user-dir "logo.png"))
 
 (provide 'mw-global)
+;;; mw-global.el ends here.
