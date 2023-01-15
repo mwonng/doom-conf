@@ -1,8 +1,13 @@
-;;; Configure Package Archives -----------------------------
+;;; Package --- org-present mode config when loading.
+;;; Commentary:
 ;;; code
 ;;; Basic Appearance ---------------------------------------
+(require 'org)
+(require 'org-present)
 (require 'mw-setting)
+
 ;; More minimal UI
+;;; Code:
 (setq inhibit-startup-screen t)
 
 ;; Let the desktop background show through
@@ -49,17 +54,18 @@
 (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
 (defun my/org-present-prepare-slide (buffer-name heading)
+  "Prepare slide in the current BUFFER-NAME which is current HEADING."
   ;; Show only top-level headlines
   (org-overview)
 
   ;; Unfold the current entry
-  (org-show-entry)
+  (org-fold-show-entry)
 
   ;; Show only direct subheadings of the slide but don't expand them
-  (org-show-children))
+  (org-fold-show-children))
 
 (defun my/org-present-start ()
-  ;; Tweak font sizes
+  "Define actions before start."
   (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
                                      (header-line (:height 4.0) variable-pitch)
                                      (org-document-title (:height 1.75) org-document-title)
@@ -74,11 +80,10 @@
   ;; Display inline images automatically
   (org-display-inline-images)
 
-  (org-present-read-only)
-  )
+  (org-present-read-only))
 
 (defun my/org-present-end ()
-  ;; Reset font customizations
+  "Define actions after quit presentation."
   (setq-local face-remapping-alist '((default variable-pitch default)))
 
   ;; Clear the header line string so that it isn't displayed
@@ -87,10 +92,7 @@
   (org-remove-inline-images)
 
   (org-present-read-write)
-  ;; Stop centering the document
-  ;; (visual-fill-column-mode 0)
-  ;; (visual-line-mode 0)
-)
+  (org-mode))
 
 ;; Turn on variable pitch fonts in Org Mode buffers
 (add-hook 'org-mode-hook 'variable-pitch-mode)

@@ -1,6 +1,14 @@
+;;; Package --- my personal org style
+;;; Commentary:
+;;; Code:
+(require 'org-superstar)
+(require 'writeroom-mode)
+(require 'mw-setting)
+
 (defun my/org-init-settings ()
+  "Init my setting when 'org-mode'."
   (org-superstar-mode t)
-  (evil-org-mode 1)
+  ;; (evil-org-mode 1)
   ;; improve org mode looks
   (setq org-startup-indented t
         org-pretty-entities t
@@ -11,6 +19,7 @@
 
 (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
 (defun my/org-font-settings ()
+  "Reload different font setting for 'org-mode'."
   ;; Increase the size of various headings
   ;; Set faces for heading levels
   (dolist (face '((org-level-1 . 1.5)
@@ -37,8 +46,11 @@
   (set-face-attribute 'org-checkbox nil  :inherit 'doom-font))
 
 (defun my/style-org ()
+  "Loading my org style."
   (my/org-init-settings)
   (my/org-font-settings)
-  (variable-pitch-mode 1))
+  (variable-pitch-mode 1)
+  (writeroom-mode 1))
 
 (provide 'mw-org-setting)
+;;; mw-org-setting.el ends here.
